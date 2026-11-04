@@ -43,3 +43,4 @@
 .project-illustration svg{position:absolute;inset:15% 0;height:70%;width:100%}
 .project-gallery-controls :focus-visible,#project-gallery:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 @media(max-width:650px){.project-gallery-numbers{order:3;width:100%;justify-content:space-between}.project-gallery-numbers a{min-width:32px}}
+.project-gallery-controls button[hidden]{display:none}
