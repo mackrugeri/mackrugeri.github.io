@@ -30,17 +30,92 @@
 .blog-table-wrap{overflow-x:auto;margin:28px 0}.blog-table{width:100%;border-collapse:collapse;font-size:14px}.blog-table caption{text-align:left;color:var(--muted);font-size:12px;margin-bottom:12px}.blog-table th,.blog-table td{text-align:left;padding:13px 17px;border:1px solid var(--line)}.blog-table th{background:#eaece3}.blog-body a{text-decoration:underline;text-underline-offset:3px}
 
 /* Selected work carousel */
-.project-gallery-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
-.project-gallery-controls button,.project-gallery-numbers a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:6px;background:#eeeee5;color:var(--ink);font:inherit;font-size:13px}
-.project-gallery-controls button:hover:not(:disabled),.project-gallery-numbers a:hover{border-color:var(--orange)}
-.project-gallery-controls button:disabled{opacity:.45;cursor:default}
-.project-gallery-numbers{display:flex;flex-wrap:wrap;gap:5px}
-.project-gallery-numbers a{min-width:36px;padding:0 8px}
-.project-gallery-numbers a[aria-current]{background:var(--ink);color:#fff}
-#project-gallery{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:100%;gap:24px;align-items:start;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 16px}
-#project-gallery .project{min-width:0;scroll-snap-align:start}
-.project-illustration{background:var(--art-background);color:#322d29}
-.project-illustration svg{position:absolute;inset:15% 0;height:70%;width:100%}
-.project-gallery-controls :focus-visible,#project-gallery:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-@media(max-width:650px){.project-gallery-numbers{order:3;width:100%;justify-content:space-between}.project-gallery-numbers a{min-width:32px}}
-.project-gallery-controls button[hidden]{display:none}
+.project-gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.project-gallery-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #faf9f2;
+  color: var(--ink);
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+}
+.project-gallery-controls button:hover:not(:disabled) {
+  background: var(--ink);
+  color: white;
+}
+.project-gallery-controls button:disabled { opacity: .4; cursor: default; }
+.project-gallery-controls .gallery-autoplay { font-size: 15px; }
+.project-gallery-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-gallery-numbers a {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  min-height: 44px;
+  font-size: 0;
+}
+.project-gallery-numbers a::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #94987e;
+  transition: width 180ms ease, background 180ms ease;
+}
+.project-gallery-numbers a[aria-current]::after {
+  width: 18px;
+  background: var(--ink);
+}
+.project-gallery-controls [hidden] { display: none; }
+.carousel-track {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 24px) / 2);
+  gap: 24px;
+  align-items: start;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a5a88e transparent;
+  scroll-snap-type: x mandatory;
+  padding: 4px 0 16px;
+}
+#project-gallery .project { min-width: 0; }
+.carousel-track > :nth-child(odd) { scroll-snap-align: start; }
+#project-gallery .project {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #faf9f2;
+}
+#project-gallery .project-head,
+#project-gallery .project > p,
+#project-gallery .project > .tags,
+#project-gallery .project > details { margin-inline: 18px; }
+#project-gallery .project > details { margin-bottom: 16px; }
+.project-illustration { background: var(--art-background); color: #322d29; }
+.project-illustration svg { position: absolute; inset: 15% 0; height: 70%; width: 100%; }
+.project-gallery-controls :focus-visible,
+.carousel-track:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+@media (max-width: 650px) {
+  .carousel-track { grid-auto-columns: 100%; gap: 16px; }
+  .carousel-track > :nth-child(n) { scroll-snap-align: start; }
+  .project-gallery-controls { gap: 4px; }
+  .project-gallery-numbers a { min-width: 22px; }
+}
