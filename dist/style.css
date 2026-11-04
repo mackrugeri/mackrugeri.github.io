@@ -28,3 +28,16 @@
 .blog-body pre{background:#242823;color:#f3f2e9;padding:24px;overflow-x:auto;font-size:13px;line-height:1.8;margin:26px 0;white-space:pre;max-width:100%;border-left:3px solid var(--orange)}.blog-body code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.blog-body ul,.blog-body ol{padding-left:25px;margin:22px 0}.blog-body li{padding-left:6px;margin-bottom:12px}.blog-body li::marker{color:var(--orange)}
 
 .blog-table-wrap{overflow-x:auto;margin:28px 0}.blog-table{width:100%;border-collapse:collapse;font-size:14px}.blog-table caption{text-align:left;color:var(--muted);font-size:12px;margin-bottom:12px}.blog-table th,.blog-table td{text-align:left;padding:13px 17px;border:1px solid var(--line)}.blog-table th{background:#eaece3}.blog-body a{text-decoration:underline;text-underline-offset:3px}
+
+/* Selected work gallery */
+.project-gallery-controls{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px}
+.project-gallery-controls[hidden]{display:none}
+.project-gallery-controls button{width:44px;height:44px;background:#eeeee5;color:var(--ink);font-size:20px}
+.project-gallery-controls button:hover:not(:disabled){border-color:var(--orange)}
+.project-gallery-controls button:disabled{opacity:.4;cursor:default}
+#project-gallery{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 34px)/2);gap:34px;align-items:start;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 16px}
+#project-gallery .project{min-width:0;scroll-snap-align:start}
+.project-visual-simple{display:grid;align-content:space-between}
+.project-visual-title{font-size:clamp(24px,4vw,44px);font-weight:650;line-height:1.1}
+.project-gallery-controls button:focus-visible,#project-gallery:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+@media(max-width:650px){#project-gallery{grid-auto-columns:90%;gap:16px}}
